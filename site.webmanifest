@@ -5,6 +5,7 @@
   "id": "/DiamondScreensaver",
   "start_url": "/DiamondScreensaver",
   "display": "standalone",
+  "display_override": ["fullscreen", "minimal-ui"],
   "background_color": "#000000",
   "theme_color": "#1a1f2e",
   "icons": [
