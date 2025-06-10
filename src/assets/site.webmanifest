@@ -2,7 +2,9 @@
   "short_name": "diamond_screensaver",
   "name": "Diamond Screensaver",
   "description": "Screensaver of diamond grid with animation",
+  "id": "/DiamondScreensaver",
   "start_url": "/DiamondScreensaver",
+  "display_override": ["fullscreen", "minimal-ui"],
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#1a1f2e",
@@ -11,6 +13,22 @@
       "src": "icons/icon.png",
       "type": "image/png",
       "sizes": "192x192"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/desktop.png",
+      "sizes": "1320x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Main page"
+    },
+    {
+      "src": "screenshots/mobile.png",
+      "sizes": "600x1313",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Main page in mobile"
     }
   ]
 }

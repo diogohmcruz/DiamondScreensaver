@@ -8,6 +8,7 @@ module.exports = merge(common, {
     new CopyPlugin({
       patterns: [
         { from: "src/assets/icons", to: "icons" },
+        { from: "src/assets/screenshots", to: "screenshots" },
         { from: "src/assets/robots.txt", to: "robots.txt" },
         { from: "src/assets/site.webmanifest", to: "site.webmanifest" },
       ],
