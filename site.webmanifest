@@ -1,0 +1,14 @@
+{
+  "short_name": "diamond_screensaver",
+  "name": "Diamond Screensaver",
+  "description": "Screensaver of diamond grid with animation",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#1a1f2e",
+  "icons": [{
+    "src": "icon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }]
+}
