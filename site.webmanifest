@@ -14,5 +14,12 @@
       "type": "image/png",
       "sizes": "192x192"
     }
+  ],
+  "screenshots": [
+    {
+      "src": "desktop.png",
+      "sizes": "1320x720",
+      "type": "image/png"
+    }
   ]
 }
