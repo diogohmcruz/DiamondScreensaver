@@ -19,7 +19,9 @@
     {
       "src": "desktop.png",
       "sizes": "1320x720",
-      "type": "image/png"
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Main page"
     }
   ]
 }
