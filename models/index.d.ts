@@ -1,2 +1,2 @@
-export { Diamond } from './diamond';
-export { DiamondGrid } from './diamond-grid';
+export { Diamond } from "./diamond";
+export { DiamondGrid } from "./diamond-grid";
