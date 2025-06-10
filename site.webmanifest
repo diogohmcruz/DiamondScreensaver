@@ -2,6 +2,7 @@
   "short_name": "diamond_screensaver",
   "name": "Diamond Screensaver",
   "description": "Screensaver of diamond grid with animation",
+  "id": "/DiamondScreensaver",
   "start_url": "/DiamondScreensaver",
   "display": "standalone",
   "background_color": "#000000",
