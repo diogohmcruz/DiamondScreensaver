@@ -1,22 +1,22 @@
-import {DiamondGrid} from './diamond-grid';
+import { DiamondGrid } from "./diamond-grid";
 
-describe('DiamondGrid', () => {
+describe("DiamondGrid", () => {
   let container: HTMLElement;
   let grid: DiamondGrid;
 
   beforeEach(() => {
-    container = document.createElement('div');
-    Object.defineProperty(window, 'innerWidth', {value: 1024});
-    Object.defineProperty(window, 'innerHeight', {value: 768});
+    container = document.createElement("div");
+    Object.defineProperty(window, "innerWidth", { value: 1024 });
+    Object.defineProperty(window, "innerHeight", { value: 768 });
 
     grid = new DiamondGrid(container);
   });
 
-  describe('constructor', () => {
-    it('should initialize the grid with diamonds', () =>
+  describe("constructor", () => {
+    it("should initialize the grid with diamonds", () =>
       expect(grid.getDiamonds().length).toBeGreaterThan(0));
 
-    it('should create diamonds that fill the viewport plus overflow', () => {
+    it("should create diamonds that fill the viewport plus overflow", () => {
       const diamonds = grid.getDiamonds();
       const expectedMinDiamonds = Math.ceil(1024 / 60) * Math.ceil(768 / 30);
 
@@ -24,8 +24,8 @@ describe('DiamondGrid', () => {
     });
   });
 
-  describe('clearGrid', () => {
-    it('should remove all diamonds', () => {
+  describe("clearGrid", () => {
+    it("should remove all diamonds", () => {
       grid.clearGrid();
 
       expect(grid.getDiamonds().length).toBe(0);
@@ -33,8 +33,8 @@ describe('DiamondGrid', () => {
     });
   });
 
-  describe('init', () => {
-    it('should clear existing diamonds and create new ones', () => {
+  describe("init", () => {
+    it("should clear existing diamonds and create new ones", () => {
       const initialDiamonds = grid.getDiamonds().length;
       grid.init();
 
@@ -42,22 +42,26 @@ describe('DiamondGrid', () => {
     });
   });
 
-  describe('createDiamonds', () => {
-    it('should create diamonds with correct spacing', () => {
+  describe("createDiamonds", () => {
+    it("should create diamonds with correct spacing", () => {
       const diamonds = grid.getDiamonds();
       const firstDiamond = diamonds[0];
       const secondDiamond = diamonds[1];
 
-      const horizontalSpacing = parseInt(secondDiamond.element.style.left) - parseInt(firstDiamond.element.style.left);
+      const horizontalSpacing =
+        parseInt(secondDiamond.element.style.left) -
+        parseInt(firstDiamond.element.style.left);
 
       expect(horizontalSpacing).toBe(60);
     });
 
-    it('should offset odd rows', () => {
+    it("should offset odd rows", () => {
       const diamonds = grid.getDiamonds();
       const firstRowY = diamonds[0].element.style.top;
 
-      const secondRowDiamond = diamonds.find(d => d.element.style.top !== firstRowY);
+      const secondRowDiamond = diamonds.find(
+        (d) => d.element.style.top !== firstRowY,
+      );
 
       if (secondRowDiamond) {
         const firstRowX = parseInt(diamonds[0].element.style.left);

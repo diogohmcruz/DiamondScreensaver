@@ -1,54 +1,57 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: "./src/index.ts",
   output: {
-    filename: 'diamond.bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "diamond.bundle.js",
+    path: path.resolve(__dirname, "dist"),
     clean: true,
   },
   module: {
     rules: [
       {
         test: /\.ts$/,
-        use: 'ts-loader',
+        use: "ts-loader",
         exclude: /node_modules/,
       },
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
-          'css-loader',
+          "style-loader",
+          "css-loader",
           {
-            loader: 'sass-loader',
+            loader: "sass-loader",
             options: {
-              api: 'modern',
+              api: "modern",
               sassOptions: {
-                outputStyle: process.env.NODE_ENV === 'production' ? 'compressed' : 'expanded'
-              }
-            }
-          }
+                outputStyle:
+                  process.env.NODE_ENV === "production"
+                    ? "compressed"
+                    : "expanded",
+              },
+            },
+          },
         ],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
-        type: 'assets/resource',
+        type: "assets/resource",
       },
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js', '.scss'],
+    extensions: [".ts", ".js", ".scss"],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-      favicon: './src/assets/icons/favicon.ico',
+      template: "./src/index.html",
+      favicon: "./src/assets/icons/favicon.ico",
       meta: {
-        'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
-        'theme-color': '#1a1f2e',
-        'description': 'Screensaver of diamond grid with animation'
-      }
+        viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
+        "theme-color": "#1a1f2e",
+        description: "Screensaver of diamond grid with animation",
+      },
     }),
-  ]
+  ],
 };

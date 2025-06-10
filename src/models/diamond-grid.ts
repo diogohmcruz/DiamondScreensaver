@@ -1,4 +1,4 @@
-import {Diamond} from ".";
+import { Diamond } from ".";
 
 export class DiamondGrid {
   private diamonds: Diamond[] = [];
@@ -23,9 +23,9 @@ export class DiamondGrid {
   }
 
   public clearGrid(): void {
-    this.diamonds.forEach(diamond => diamond.element.remove());
+    this.diamonds.forEach((diamond) => diamond.element.remove());
     this.diamonds = [];
-    this.container.innerHTML = '';
+    this.container.innerHTML = "";
   }
 
   public getDiamonds(): Diamond[] {
@@ -49,7 +49,8 @@ export class DiamondGrid {
       const y = row * verticalSpacing;
       const isOddRow = Math.abs(row) % 2 === 1;
       for (let col = -overflowMargin; col < cols + overflowMargin; col++) {
-        const x = col * horizontalSpacing + (isOddRow ? horizontalSpacing/2 : 0);
+        const x =
+          col * horizontalSpacing + (isOddRow ? horizontalSpacing / 2 : 0);
         const diamond = new Diamond(x, y);
         container.appendChild(diamond.element);
         diamonds.push(diamond);
