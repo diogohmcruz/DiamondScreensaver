@@ -17,7 +17,7 @@
   ],
   "screenshots": [
     {
-      "src": "desktop.png",
+      "src": "screenshots/desktop.png",
       "sizes": "1320x720",
       "type": "image/png",
       "form_factor": "wide",
