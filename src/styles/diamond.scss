@@ -1,0 +1,45 @@
+@use './variables' as v;
+@use './mixins' as m;
+
+.diamond {
+  position: absolute;
+  width: v.$diamond-width;
+  height: v.$diamond-height;
+
+  &__triangle {
+    @include m.triangle-base;
+    @include m.diamond-transition;
+  }
+
+  .bottomright {
+    @extend .diamond__triangle;
+    top: 0;
+    left: 0;
+    border-bottom: v.$diamond-half-height solid;
+    border-left: v.$diamond-half-width solid transparent;
+  }
+
+  .bottomleft {
+    @extend .diamond__triangle;
+    top: 0;
+    right: 0;
+    border-bottom: v.$diamond-half-height solid;
+    border-right: v.$diamond-half-width solid transparent;
+  }
+
+  .topright {
+    @extend .diamond__triangle;
+    bottom: 0;
+    left: 0;
+    border-top: v.$diamond-half-height solid;
+    border-left: v.$diamond-half-width solid transparent;
+  }
+
+  .topleft {
+    @extend .diamond__triangle;
+    bottom: 0;
+    right: 0;
+    border-top: v.$diamond-half-height solid;
+    border-right: v.$diamond-half-width solid transparent;
+  }
+}

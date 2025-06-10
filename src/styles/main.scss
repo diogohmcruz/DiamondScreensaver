@@ -1,0 +1,13 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+@use 'diamond';
+
+body {
+  @include m.fullscreen;
+  background: v.$background-color;
+}
+
+#container {
+  @include m.fullscreen;
+  position: relative;
+}

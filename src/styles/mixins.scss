@@ -1,0 +1,18 @@
+@use './variables' as v;
+
+@mixin triangle-base {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+@mixin diamond-transition {
+  transition: border-color v.$transition-duration v.$transition-timing;
+}
+
+@mixin fullscreen {
+  margin: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
