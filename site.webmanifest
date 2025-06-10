@@ -4,8 +4,8 @@
   "description": "Screensaver of diamond grid with animation",
   "id": "/DiamondScreensaver",
   "start_url": "/DiamondScreensaver",
-  "display": "standalone",
   "display_override": ["fullscreen", "minimal-ui"],
+  "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#1a1f2e",
   "icons": [
