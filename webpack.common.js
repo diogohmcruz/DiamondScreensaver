@@ -49,7 +49,7 @@ module.exports = {
       favicon: "./src/assets/icons/favicon.ico",
       meta: {
         viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
-        "theme-color": "#1a1f2e",
+        "theme-color": "#364563",
         description: "Screensaver of diamond grid with animation",
       },
     }),
