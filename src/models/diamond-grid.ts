@@ -47,12 +47,11 @@ export class DiamondGrid {
 
     for (let row = -overflowMargin; row < rows + overflowMargin; row++) {
       const isOddRow = Math.abs(row) % 2 === 1;
-      const rowDiv = document.createElement('div');
-      rowDiv.className = `diamond-row ${isOddRow ? 'odd' : 'even'}`;
+      const rowDiv = document.createElement("div");
+      rowDiv.className = `diamond-row ${isOddRow ? "odd" : "even"}`;
       container.appendChild(rowDiv);
 
       for (let col = -overflowMargin; col < cols + overflowMargin; col++) {
-        const x = col * horizontalSpacing + (isOddRow ? horizontalSpacing / 2 : 0);
         const diamond = new Diamond();
         rowDiv.appendChild(diamond.element);
         diamonds.push(diamond);

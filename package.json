@@ -15,6 +15,7 @@
     "build": "webpack --config webpack.config.prod.js",
     "test": "jest",
     "test:watch": "jest --watch",
+    "lint": "prettier -w *.ts",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },

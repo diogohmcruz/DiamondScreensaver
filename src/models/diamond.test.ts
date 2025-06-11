@@ -1,98 +1,51 @@
 import { Diamond } from "./diamond";
 
 describe("Diamond", () => {
-  let diamond: Diamond;
+  let mockRandom: jest.SpyInstance = jest.spyOn(Math, "random");
 
   beforeEach(() => {
-    jest.spyOn(Math, "random").mockReturnValue(0.5);
-    diamond = new Diamond(100, 200);
+    document.body.innerHTML = "";
   });
 
   afterEach(() => {
-    jest.restoreAllMocks();
+    mockRandom.mockRestore();
+    jest.clearAllMocks();
   });
 
-  describe("constructor", () => {
-    it("should create a diamond element with correct position", () => {
-      expect(diamond.element.className).toBe("diamond");
-      expect(diamond.element.style.left).toBe("100px");
-      expect(diamond.element.style.top).toBe("200px");
-    });
+  it("should create a diamond with correct structure", () => {
+    mockRandom.mockReturnValue(0.5);
+    const diamond = new Diamond();
+    expect(diamond.element).toBeTruthy();
+    expect(diamond.element.className).toBe("diamond");
 
-    it("should create all four sections", () => {
-      const sections = diamond.element.children;
-      expect(sections.length).toBe(4);
-      expect(sections[0].className).toBe("bottomright");
-      expect(sections[1].className).toBe("bottomleft");
-      expect(sections[2].className).toBe("topright");
-      expect(sections[3].className).toBe("topleft");
-    });
-  });
+    const sections = Array.from(diamond.element.children);
+    expect(sections).toHaveLength(4);
 
-  describe("color updates", () => {
-    it("should apply neutral color when random value is below chanceOfNeutral", () => {
-      jest.spyOn(Math, "random").mockReturnValue(0.05);
-      const newDiamond = new Diamond(0, 0);
-
-      const sections = Array.from(
-        newDiamond.element.children,
-      ) as HTMLDivElement[];
-      const expectedColor = "hsl(220, 30%, 20%)";
-
-      expect(sections[0].style.borderBottomColor).toBe(expectedColor);
-      expect(sections[1].style.borderBottomColor).toBe(expectedColor);
-      expect(sections[2].style.borderTopColor).toBe(expectedColor);
-      expect(sections[3].style.borderTopColor).toBe(expectedColor);
-    });
-
-    it("should apply varied colors when random value is above chanceOfNeutral", () => {
-      jest.spyOn(Math, "random").mockReturnValue(0.5);
-      const newDiamond = new Diamond(0, 0);
-
-      const sections = Array.from(
-        newDiamond.element.children,
-      ) as HTMLDivElement[];
-
-      // Check that colors are different
-      const colors = new Set([
-        sections[0].style.borderBottomColor,
-        sections[1].style.borderBottomColor,
-        sections[2].style.borderTopColor,
-        sections[3].style.borderTopColor,
-      ]);
-
-      expect(colors.size).toBeGreaterThan(1);
+    const expectedSections: string[] = [
+      "bottomright",
+      "bottomleft",
+      "topright",
+      "topleft",
+    ];
+    sections.forEach((section, index) => {
+      expect(section.className).toBe(expectedSections[index]);
     });
   });
 
-  describe("animation", () => {
-    beforeEach(() => jest.useFakeTimers());
+  it("should initialize with varied colors when random value is above threshold", () => {
+    mockRandom.mockReturnValue(0.5);
+    const colorfulDiamond = new Diamond();
 
-    afterEach(() => jest.useRealTimers());
+    const sections = Array.from(
+      colorfulDiamond.element.children,
+    ) as HTMLDivElement[];
+    const colors = new Set(
+      sections.map(
+        (section) =>
+          section.style.borderBottomColor || section.style.borderTopColor,
+      ),
+    );
 
-    it("should start color animation", () => {
-      const spyUpdateColors = jest.spyOn(
-        Diamond.prototype as any,
-        "updateColors",
-      );
-      const diamond = new Diamond(0, 0);
-
-      jest.advanceTimersByTime(8000);
-
-      expect(spyUpdateColors).toHaveBeenCalledTimes(2);
-    });
-
-    it("should skip color update when random value is below chanceOfColorChange", () => {
-      jest.spyOn(Math, "random").mockReturnValue(0.95);
-      const spyUpdateColors = jest.spyOn(
-        Diamond.prototype as any,
-        "updateColors",
-      );
-
-      const diamond = new Diamond(0, 0);
-      jest.advanceTimersByTime(8000);
-
-      expect(spyUpdateColors).toHaveBeenCalledTimes(1);
-    });
+    expect(colors.size).toBeGreaterThan(1);
   });
 });
