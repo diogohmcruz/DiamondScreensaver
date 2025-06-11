@@ -6,7 +6,7 @@ export declare class Diamond {
     private intervalColorTransition;
     element: HTMLDivElement;
     private sections;
-    constructor(x: number, y: number);
+    constructor();
     private createSection;
     private updateColors;
     private startColorAnimation;
