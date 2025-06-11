@@ -10,11 +10,9 @@ export class Diamond {
   element: HTMLDivElement;
   private sections: DiamondSection;
 
-  constructor(x: number, y: number) {
+  constructor() {
     this.element = document.createElement("div");
     this.element.className = "diamond";
-    this.element.style.left = `${x}px`;
-    this.element.style.top = `${y}px`;
 
     this.sections = {
       bottomright: this.createSection("bottomright"),

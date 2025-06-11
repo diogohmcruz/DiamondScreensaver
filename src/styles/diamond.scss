@@ -1,14 +1,35 @@
 @use "./variables" as v;
 @use "./mixins" as m;
 
+.diamond-row {
+  display: flex;
+  flex-direction: row;
+  height: v.$diamond-half-height;
+  position: relative;
+
+  margin-left: -1px;
+  margin-right: -1px;
+
+  &.odd {
+    margin-left: -1 + -1 * v.$diamond-half-width;
+  }
+
+  &:first-child {
+    margin-top: -1 * v.$diamond-height;
+  }
+}
+
 .diamond {
-  position: absolute;
+  position: relative;
   width: v.$diamond-width;
   height: v.$diamond-height;
+  flex-shrink: 0;
+  margin: -1px;
 
   &__triangle {
     @include m.triangle-base;
     @include m.diamond-transition;
+    transform: scale(1.01);
   }
 
   .bottomright {

@@ -33,7 +33,7 @@ export class DiamondGrid {
   }
 
   private createDiamonds(container: HTMLElement): Diamond[] {
-    const diamonds = [];
+    const diamonds: Diamond[] = [];
 
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -46,13 +46,15 @@ export class DiamondGrid {
     const rows = Math.ceil(height / verticalSpacing);
 
     for (let row = -overflowMargin; row < rows + overflowMargin; row++) {
-      const y = row * verticalSpacing;
       const isOddRow = Math.abs(row) % 2 === 1;
+      const rowDiv = document.createElement('div');
+      rowDiv.className = `diamond-row ${isOddRow ? 'odd' : 'even'}`;
+      container.appendChild(rowDiv);
+
       for (let col = -overflowMargin; col < cols + overflowMargin; col++) {
-        const x =
-          col * horizontalSpacing + (isOddRow ? horizontalSpacing / 2 : 0);
-        const diamond = new Diamond(x, y);
-        container.appendChild(diamond.element);
+        const x = col * horizontalSpacing + (isOddRow ? horizontalSpacing / 2 : 0);
+        const diamond = new Diamond();
+        rowDiv.appendChild(diamond.element);
         diamonds.push(diamond);
       }
     }

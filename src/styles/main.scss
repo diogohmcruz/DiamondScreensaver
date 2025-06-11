@@ -10,4 +10,6 @@ body {
 #container {
   @include m.fullscreen;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
